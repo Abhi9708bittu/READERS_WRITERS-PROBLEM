@@ -42,7 +42,20 @@ Initialization:
               V(mutex);
    
 ```
-        
+ solution:
+ //Reader starve-free:
+
+Acquire the mutex semaphore.
+If there are no writers in the critical section and no writers waiting to enter the critical section, increment the reader_in variable and release the semaphore_rd semaphore.
+Otherwise, increment the reader_wait variable and release the mutex semaphore.
+Acquire the semaphore_rd semaphore.
+Perform the reading operation.
+Acquire the mutex semaphore.
+Decrement the reader_in variable.
+If there are no more readers in the critical section and there are writers waiting to enter the critical section, release the semaphore_wrt semaphore and allow writers to enter the critical section.
+Release the mutex semaphore.
+    
+    
 // writer starve free
   ```js 
  p(mutex);
@@ -69,19 +82,6 @@ Initialization:
               V(mutex);
      ```
     SOLUTION:
-    
-    //Reader starve-free:
-
-Acquire the mutex semaphore.
-If there are no writers in the critical section and no writers waiting to enter the critical section, increment the reader_in variable and release the semaphore_rd semaphore.
-Otherwise, increment the reader_wait variable and release the mutex semaphore.
-Acquire the semaphore_rd semaphore.
-Perform the reading operation.
-Acquire the mutex semaphore.
-Decrement the reader_in variable.
-If there are no more readers in the critical section and there are writers waiting to enter the critical section, release the semaphore_wrt semaphore and allow writers to enter the critical section.
-Release the mutex semaphore.
-
 
 //Writer starve-free:
 
