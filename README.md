@@ -1,11 +1,16 @@
 # READERS_WRITERS-PROBLEM
 Starve free readers-Writers problem
 
-//problem statement - The Readers-Writers Problem is a classical synchronization problem in computer science. It deals with multiple threads or processes trying to access shared resources concurrently. Starve-Free Readers-Writers Problem, we want to ensure that readers and writers are granted access to the shared resource without starvation.
+PROBLEM STATEMENT - The Readers-Writers Problem is a classical synchronization problem in computer science. It deals with multiple threads or processes trying to access shared resources concurrently. Starve-Free Readers-Writers Problem, we want to ensure that readers and writers are granted access to the shared resource without starvation.
 
 
 
-Initialization:
+SOLUTION : The given code implements a solution to the classical Readers-Writers problem. This problem deals with multiple readers and writers accessing a shared resource concurrently. The code provides two solutions to the problem, one that is "reader-starve-free" and another that is "writer-starve-free." Both solutions ensure that the readers and writers do not starve and get fair access to the shared resource.
+
+
+//INITIALISATION :
+
+The shared variables reader_in, reader_wait, writer_in, and writer_wait are protected using the binary semaphore semaphore_mutex. The semaphore_rd and semaphore_wrt are used to control access to the critical section by readers and writers, respectively.
 
  ```js
   Int reader_in=0;   //the number of readers currently in the critical section (initialized to 0).
@@ -19,6 +24,9 @@ Initialization:
 
 ```
  // reader starve free
+   
+   The reader-starve-free solution allows multiple readers to access the critical section concurrently while ensuring that the writers get access when there are no more readers waiting. The code first acquires the mutex semaphore to protect the shared variables. It then checks if there are no writers waiting and no readers currently in the critical section. If this condition is true, it increments the reader_in variable and releases the semaphore_rd, allowing the readers to access the critical section. Otherwise, it increments the reader_wait variable and releases the mutex. It then waits on the semaphore_rd to gain access to the critical section. After performing the reading operation, it acquires the mutex again and decrements the reader_in variable. If this is the last reader and there are writers waiting, it releases the semaphore_wrt to allow writers to access the critical section.
+   
   ```js
  p(mutex);
      if(reader_in + writer_wait ==0){
@@ -44,21 +52,11 @@ Initialization:
               V(mutex);
    
 ```
- solution:
- //Reader starve-free:
-
-Acquire the mutex semaphore.
-If there are no writers in the critical section and no writers waiting to enter the critical section, increment the reader_in variable and release the semaphore_rd semaphore.
-Otherwise, increment the reader_wait variable and release the mutex semaphore.
-Acquire the semaphore_rd semaphore.
-Perform the reading operation.
-Acquire the mutex semaphore.
-Decrement the reader_in variable.
-If there are no more readers in the critical section and there are writers waiting to enter the critical section, release the semaphore_wrt semaphore and allow writers to enter the critical section.
-Release the mutex semaphore.
-    
+ 
     
 // writer starve free
+
+The writer-starve-free solution allows only one writer to access the critical section at a time while ensuring that the readers get access when there are no more writers waiting. The code first acquires the mutex semaphore to protect the shared variables. It then checks if there are no readers waiting and no writers currently in the critical section. If this condition is true, it increments the writer_in variable and releases the semaphore_wrt, allowing the writer to access the critical section. Otherwise, it increments the writer_wait variable and releases the mutex. It then waits on the semaphore_wrt to gain access to the critical section. After performing the writing operation, it acquires the mutex again and decrements the writer_in variable. If this is the last writer and there are readers waiting, it releases the semaphore_rd to allow readers to access the critical section.
 
   ```js 
  p(mutex);
@@ -86,16 +84,4 @@ Release the mutex semaphore.
      ```
 
 
-solution:
-//writer starve free
 
-
-Acquire the mutex semaphore.
-If there are no readers or writers in the critical section, increment the writer_in variable and release the semaphore_wrt semaphore.
-Otherwise, increment the writer_wait variable and release the mutex semaphore.
-Acquire the semaphore_wrt semaphore.
-Perform the writing operation.
-Acquire the mutex semaphore.
-Decrement the writer_in variable.
-If there are no more writers in the critical section and there are readers waiting to enter the critical section, release the semaphore_rd semaphore and allow readers to enter the critical section.
-Release the mutex semaphore.
