@@ -17,7 +17,7 @@ Initialization:
   Int semaphore_wrt=1;     // a binary semaphore used to control access to the critical section by writers (initialized to 1).
 
  // reader starve free
-  
+  ```js
  p(mutex);
      if(reader_in + writer_wait ==0){
       reader_in++;
@@ -41,7 +41,7 @@ Initialization:
               } 
               V(mutex);
    
-
+```
         
 // writer starve free
   
