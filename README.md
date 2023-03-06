@@ -44,7 +44,7 @@ Initialization:
 ```
         
 // writer starve free
-  
+  ```js 
  p(mutex);
      if(writer_in + reader_wait ==0){
       writer_in++;
@@ -67,7 +67,7 @@ Initialization:
                 } 
               } 
               V(mutex);
-     
+     ```
     SOLUTION:
     
     //Reader starve-free:
