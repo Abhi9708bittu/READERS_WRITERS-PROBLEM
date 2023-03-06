@@ -82,3 +82,17 @@ Release the mutex semaphore.
               } 
               V(mutex);
      ```
+
+
+
+
+
+Acquire the mutex semaphore.
+If there are no readers or writers in the critical section, increment the writer_in variable and release the semaphore_wrt semaphore.
+Otherwise, increment the writer_wait variable and release the mutex semaphore.
+Acquire the semaphore_wrt semaphore.
+Perform the writing operation.
+Acquire the mutex semaphore.
+Decrement the writer_in variable.
+If there are no more writers in the critical section and there are readers waiting to enter the critical section, release the semaphore_rd semaphore and allow readers to enter the critical section.
+Release the mutex semaphore.
