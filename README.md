@@ -6,14 +6,13 @@ Starve free readers-Writers problem
 Initialization
 
 
-  int reader_in;   //readers inside the critical section
-  int reader_wait;    //readers waiting to go into the critical section 
-  int writer_in;       //writers inside the critical section
-  int writer_wait;      //readers waiting to go into the critical section 
-  int semaphore_mutex=1;   ////define semaphore mutex for both readers and r
-  int semaphore_rd=1;      // reader lock , rd=1 means readers is free and rd=0 means lock
-  int semaphore_wrt=1;     // writer lock , wrt=1 means r is free and wrt=0 means lock
-
+  int reader_in=0;   //the number of readers currently in the critical section (initialized to 0).
+  int reader_wait=0;    //the number of readers waiting to enter the critical section (initialized to 0). 
+  int writer_in=0;       //the number of writers currently in the critical section (initialized to 0).
+  int writer_wait=0;      //the number of writers waiting to enter the critical section (initialized to 0).
+  int semaphore_mutex=1;   //a binary semaphore used to protect the shared variables reader_in, reader_wait, writer_in, and writer_wait (initialized to 1).
+  int semaphore_rd=1;      // a binary semaphore used to control access to the critical section by readers (initialized to 1).
+  int semaphore_wrt=1;     // a binary semaphore used to control access to the critical section by writers (initialized to 1).
 
  // reader starve free
   
