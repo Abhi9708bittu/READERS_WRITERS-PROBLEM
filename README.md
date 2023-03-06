@@ -82,10 +82,3 @@ Release the mutex semaphore.
               } 
               V(mutex);
      ```
- 
- 
-solution :
-// starve free writer
-
-
-    
