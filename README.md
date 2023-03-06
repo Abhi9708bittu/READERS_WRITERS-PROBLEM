@@ -86,7 +86,8 @@ Release the mutex semaphore.
      ```
 
 
-
+solution:
+//writer starve free
 
 
 Acquire the mutex semaphore.
