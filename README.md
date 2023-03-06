@@ -1,11 +1,11 @@
 # READERS_WRITERS-PROBLEM
 Starve free readers-Writers problem
 
-Problem statement: The Readers-Writers Problem is a classical synchronization problem in computer science. It deals with multiple threads or processes trying to access shared resources concurrently. Starve-Free Readers-Writers Problem, we want to ensure that readers and writers are granted access to the shared resource without starvation.
+PROBLEM STATEMENT: The Readers-Writers Problem is a classical synchronization problem in computer science. It deals with multiple threads or processes trying to access shared resources concurrently. Starve-Free Readers-Writers Problem, we want to ensure that readers and writers are granted access to the shared resource without starvation.
 
 
 
-Solution: The given code implements a solution to the classical Readers-Writers problem. This problem deals with multiple readers and writers accessing a shared resource concurrently. The code provides two solutions to the problem, one that is "reader-starve-free" and another that is "writer-starve-free." Both solutions ensure that the readers and writers do not starve and get fair access to the shared resource.
+SOLUTION: The given code implements a solution to the classical Readers-Writers problem. This problem deals with multiple readers and writers accessing a shared resource concurrently. The code provides two solutions to the problem, one that is "reader-starve-free" and another that is "writer-starve-free." Both solutions ensure that the readers and writers do not starve and get fair access to the shared resource.
 
 
 //INITIALISATION :
