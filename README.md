@@ -7,7 +7,7 @@ Starve free readers-Writers problem
 
 Initialization:
 
-
+ ```js
   Int reader_in=0;   //the number of readers currently in the critical section (initialized to 0).
   Int reader_wait=0;    //the number of readers waiting to enter the critical section (initialized to 0). 
   Int writer_in=0;       //the number of writers currently in the critical section (initialized to 0).
@@ -16,6 +16,8 @@ Initialization:
   Int semaphore_rd=1;      // a binary semaphore used to control access to the critical section by readers (initialized to 1).
   Int semaphore_wrt=1;     // a binary semaphore used to control access to the critical section by writers (initialized to 1).
 
+
+```
  // reader starve free
   ```js
  p(mutex);
