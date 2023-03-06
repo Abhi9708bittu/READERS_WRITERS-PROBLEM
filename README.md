@@ -57,6 +57,7 @@ Release the mutex semaphore.
     
     
 // writer starve free
+
   ```js 
  p(mutex);
      if(writer_in + reader_wait ==0){
@@ -81,9 +82,7 @@ Release the mutex semaphore.
               } 
               V(mutex);
      ```
-    SOLUTION:
-
-//Writer starve-free:
+ 
 
 Acquire the mutex semaphore.
 If there are no readers or writers in the critical section, increment the writer_in variable and release the semaphore_wrt semaphore.
